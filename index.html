@@ -1,0 +1,1140 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>El Palo Justo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap">
+<style>
+/* ── Tokens ── */
+:root {
+  --brown-deep: #2D2118;
+  --brown-mid: #6B4C3B;
+  --brown-light: #A67C52;
+  --cream: #F0E6D0;
+  --sand: #E8DFD2;
+  --offwhite: #FAF8F4;
+  --text: #1A1410;
+  --text-secondary: #5C4A3A;
+  --bg: var(--offwhite);
+  --bg-alt: var(--sand);
+  --bg-dark: var(--brown-deep);
+  --nav-bg: rgba(250, 248, 244, 0.92);
+  --nav-border: rgba(45, 33, 24, 0.08);
+  --card-bg: #fff;
+  --card-shadow: rgba(45, 33, 24, 0.06);
+  --gallery-caption: rgba(45, 33, 24, 0.85);
+  --accent-green: #4A7C59;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1A1410;
+    --bg-alt: #231C15;
+    --bg-dark: #0F0B08;
+    --text: #E8DFD2;
+    --text-secondary: #B8A898;
+    --nav-bg: rgba(26, 20, 16, 0.94);
+    --nav-border: rgba(240, 230, 208, 0.08);
+    --card-bg: #2A2118;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --gallery-caption: rgba(26, 20, 16, 0.88);
+    --cream: #F0E6D0;
+    --brown-light: #C99B6D;
+    --accent-green: #6BA37A;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1A1410;
+  --bg-alt: #231C15;
+  --bg-dark: #0F0B08;
+  --text: #E8DFD2;
+  --text-secondary: #B8A898;
+  --nav-bg: rgba(26, 20, 16, 0.94);
+  --nav-border: rgba(240, 230, 208, 0.08);
+  --card-bg: #2A2118;
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --gallery-caption: rgba(26, 20, 16, 0.88);
+  --cream: #F0E6D0;
+  --brown-light: #C99B6D;
+  --accent-green: #6BA37A;
+}
+
+/* ── Reset & Base ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-inline: 0;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ── Typography ── */
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-weight: 600; line-height: 1.2; }
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); text-wrap: balance; }
+.section-eyebrow {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 0.5rem;
+}
+
+/* ── Nav ── */
+nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--nav-border);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--brown-deep);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .nav-logo { color: var(--cream); }
+}
+:root[data-theme="dark"] .nav-logo { color: var(--cream); }
+.nav-logo img { height: 36px; width: 36px; border-radius: 4px; }
+.nav-links { display: flex; gap: 8px; list-style: none; }
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--text); background: var(--bg-alt); }
+
+/* Mobile hamburger */
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--text); }
+.nav-toggle svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+
+@media (max-width: 640px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px; left: 0; right: 0;
+    flex-direction: column;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 24px 20px;
+    border-bottom: 1px solid var(--nav-border);
+    gap: 4px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 12px; font-size: 1rem; }
+}
+
+/* ── Sections ── */
+section { padding: 80px 24px; }
+@media (max-width: 640px) { section { padding: 56px 16px; } }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+/* ── Hero ── */
+.hero {
+  padding: 100px 24px 80px;
+  text-align: center;
+  background: var(--bg);
+}
+@media (max-width: 640px) { .hero { padding: 64px 16px 56px; } }
+.hero-logo {
+  width: 160px;
+  height: 160px;
+  border-radius: 16px;
+  margin: 0 auto 32px;
+  box-shadow: 0 8px 32px rgba(45, 33, 24, 0.12);
+}
+@media (max-width: 640px) { .hero-logo { width: 120px; height: 120px; } }
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  color: var(--brown-deep);
+  margin-bottom: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero h1 { color: var(--cream); }
+}
+:root[data-theme="dark"] .hero h1 { color: var(--cream); }
+.hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--brown-light);
+  margin-bottom: 32px;
+}
+.hero-location {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.hero-location svg { width: 16px; height: 16px; stroke: var(--brown-light); fill: none; stroke-width: 2; }
+
+/* ── Gallery ── */
+.gallery-section { background: var(--bg-alt); }
+.gallery-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+.gallery-intro p { color: var(--text-secondary); margin-top: 12px; font-size: 1.05rem; }
+
+/* Category tabs */
+.cat-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.cat-tab {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 1px solid var(--nav-border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.cat-tab:hover { color: var(--text); border-color: var(--brown-light); }
+.cat-tab.active {
+  background: var(--brown-deep);
+  color: var(--cream);
+  border-color: var(--brown-deep);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .cat-tab.active {
+    background: var(--brown-light);
+    color: var(--brown-deep);
+    border-color: var(--brown-light);
+  }
+}
+:root[data-theme="dark"] .cat-tab.active {
+  background: var(--brown-light);
+  color: var(--brown-deep);
+  border-color: var(--brown-light);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; gap: 12px; } }
+.gallery-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: 0 2px 8px var(--card-shadow);
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.gallery-item.hidden {
+  display: none;
+}
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.gallery-item.portrait img { aspect-ratio: 3/4; }
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px 14px 12px;
+  background: linear-gradient(transparent, var(--gallery-caption));
+  color: var(--cream);
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover figcaption { opacity: 1; }
+@media (hover: none) { .gallery-item figcaption { opacity: 1; } }
+
+/* Category badge */
+.gallery-item .cat-badge {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(45, 33, 24, 0.7);
+  color: var(--cream);
+  backdrop-filter: blur(4px);
+}
+
+
+/* Photo count badge */
+.gallery-item .photo-count {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(45, 33, 24, 0.7);
+  color: var(--cream);
+  backdrop-filter: blur(4px);
+}
+
+/* ── Lightbox ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(15, 11, 8, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.lightbox.active { opacity: 1; pointer-events: auto; }
+.lightbox > img {
+  max-width: min(90vw, 1200px);
+  max-height: 78vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: var(--cream);
+  font-size: 1.75rem;
+  cursor: pointer;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+  z-index: 210;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.2); }
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: var(--cream);
+  font-size: 2.25rem;
+  cursor: pointer;
+  width: 48px; height: 48px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+  z-index: 210;
+}
+.lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+.lightbox-nav.visible { display: flex; }
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+@media (max-width: 640px) {
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .lightbox-nav { width: 40px; height: 40px; font-size: 1.5rem; }
+}
+.lightbox-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 0; right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.lightbox-caption {
+  color: var(--cream);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 0 72px;
+}
+.lightbox-counter {
+  color: rgba(240, 230, 208, 0.5);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* ── Services ── */
+.services-section { background: var(--bg); }
+.services-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+.services-intro p { color: var(--text-secondary); margin-top: 12px; font-size: 1.05rem; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.service-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 12px var(--card-shadow);
+  border: 1px solid var(--nav-border);
+}
+.service-icon {
+  width: 44px; height: 44px;
+  background: var(--cream);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .service-icon { background: var(--brown-deep); }
+}
+:root[data-theme="dark"] .service-icon { background: var(--brown-deep); }
+.service-icon svg { width: 22px; height: 22px; stroke: var(--brown-light); fill: none; stroke-width: 1.8; }
+.service-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.service-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Info blocks under services */
+.info-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.info-block {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--nav-border);
+}
+.info-block h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.info-block h3 svg {
+  width: 18px; height: 18px;
+  stroke: var(--brown-light);
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+.info-block p, .info-block ul {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.info-block ul {
+  list-style: none;
+  padding: 0;
+}
+.info-block li {
+  padding: 3px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.info-block li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brown-light);
+}
+
+/* ── About ── */
+.about-section {
+  background: var(--brown-deep);
+  color: var(--cream);
+}
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-inner .section-eyebrow { color: var(--brown-light); }
+.about-inner h2 { color: var(--cream); margin-bottom: 24px; }
+.about-inner p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(240, 230, 208, 0.82);
+  margin-bottom: 16px;
+}
+.about-inner p:last-of-type { margin-bottom: 0; }
+.about-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--brown-light);
+  margin: 24px auto;
+  border-radius: 1px;
+}
+
+/* ── Contact ── */
+.contact-section { background: var(--bg-alt); }
+.contact-intro {
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto 40px;
+}
+.contact-intro p { color: var(--text-secondary); margin-top: 12px; font-size: 1.05rem; }
+.contact-channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 12px var(--card-shadow);
+  border: 1px solid var(--nav-border);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: var(--text);
+}
+.contact-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--card-shadow); }
+.contact-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-icon.wa { background: #25D366; }
+.contact-icon.ig { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
+.contact-icon.em { background: var(--brown-light); }
+.contact-icon.fb { background: #1877F2; }
+.contact-icon svg { width: 24px; height: 24px; fill: #fff; }
+.contact-label { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 2px; }
+.contact-value { font-weight: 600; font-size: 0.95rem; }
+
+/* ── Footer ── */
+footer {
+  background: var(--brown-deep);
+  color: rgba(240, 230, 208, 0.5);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 0.82rem;
+}
+footer a { color: var(--brown-light); }
+
+/* ── Focus & Motion ── */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--brown-light);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo">
+      <img src="img/logo.png" alt="El Palo Justo" width="36" height="36">
+      <span>El Palo Justo</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menú" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
+      <li><a href="#trabajos" onclick="closeMenu()">Trabajos</a></li>
+      <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
+      <li><a href="#nosotros" onclick="closeMenu()">Nosotros</a></li>
+      <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="inicio">
+  <div class="section-inner">
+    <img src="img/logo.png" alt="El Palo Justo — Muebles Rústicos" class="hero-logo" width="160" height="160">
+    <h1>El Palo Justo</h1>
+    <p class="hero-sub">Muebles rústicos a medida</p>
+    <p class="hero-location">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Parque del Plata, Canelones, Uruguay
+    </p>
+  </div>
+</section>
+
+<!-- Trabajos -->
+<section class="gallery-section" id="trabajos">
+  <div class="section-inner">
+    <div class="gallery-intro">
+      <span class="section-eyebrow">Trabajos</span>
+      <h2>Lo que hacemos habla por sí mismo</h2>
+      <p>Cada pieza es única, pensada para el espacio y las necesidades de quien la encarga.</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="cat-tabs">
+      <button class="cat-tab active" onclick="filterGallery('todos')">Todos</button>
+      <button class="cat-tab" onclick="filterGallery('muebles')">Muebles</button>
+      <button class="cat-tab" onclick="filterGallery('bolsillo')">Muebles de bolsillo</button>
+      <button class="cat-tab" onclick="filterGallery('aberturas')">Aberturas</button>
+      <button class="cat-tab" onclick="filterGallery('soluciones')">Soluciones a medida</button>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- MUEBLES -->
+      <figure class="gallery-item" data-cat="muebles" data-images='["img/mesita-ratona.jpg","img/mesita-ratona-2.jpg","img/mesita-ratona-3.jpg","img/mesita-ratona-4.jpg"]' data-alts='["Mesita ratona de eucalipto colorado y grandis","Mesita ratona con libro","Mesita ratona vista completa","Mesita ratona en exteriores"]' onclick="openLightbox(this)">
+        <img src="img/mesita-ratona.jpg" alt="Mesita ratona de eucalipto colorado y grandis" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <span class="photo-count">4 fotos</span>
+        <figcaption>Mesita ratona · Eucalipto colorado y grandis</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/esquinero-pine.jpg" alt="Esquinero de pino" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Esquinero · Pino</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/esquinero-hardwood.jpg" alt="Esquinero de madera dura" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Esquinero · Madera dura</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="muebles" data-images='["img/mesa-liveedge.jpg","img/mesa-liveedge-2.jpg"]' data-alts='["Mesa de borde vivo con patas de hierro","Mesa de borde vivo vista completa"]' onclick="openLightbox(this)">
+        <img src="img/mesa-liveedge.jpg" alt="Mesa de borde vivo con patas de hierro" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Mesa borde vivo · Patas de hierro</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="muebles" data-images='["img/banco.jpg","img/banco-2.jpg"]' data-alts='["Banco de eucalipto","Banco de eucalipto vista completa"]' onclick="openLightbox(this)">
+        <img src="img/banco.jpg" alt="Banco de eucalipto" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Banco · Eucalipto</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/estante-tv.jpg" alt="Estante flotante para TV" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Estante flotante · TV</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/zapatero.jpg" alt="Zapatero de madera" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Zapatero</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" data-images='["img/atril.jpg","img/atril-2.jpg","img/atril-3.jpg","img/atril-cuadro.jpg","img/atril-cuadro-2.jpg"]' data-alts='["Atril de pino","Atril detalle del mecanismo","Atril vista desde abajo","Atril con cuadro - vista frontal","Atril con cuadro - cuerpo entero"]' onclick="openLightbox(this)">
+        <img src="img/atril.jpg" alt="Atril de pino" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <span class="photo-count">5 fotos</span>
+        <figcaption>Atril · Pino</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" data-images='["img/armario-limpieza.jpg", "img/armario-antes-despues.jpg"]' data-alts='["Armario de limpieza a medida", "Antes y despu\u00e9s \u2014 armario de limpieza"]' onclick="openLightbox(this)">
+        <img src="img/armario-limpieza.jpg" alt="Armario de limpieza a medida" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Armario de limpieza · MDF con tiradores negros</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/estanteria-merceria.jpg" alt="Estantería para mercería en pino" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Estantería para mercería · Pino</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" data-images='["img/mesa-marmol-2.jpg", "img/mesa-marmol.jpg"]' data-alts='["Mesa de m\u00e1rmol con patas de eucalipto", "Detalle patas de eucalipto"]' onclick="openLightbox(this)">
+        <img src="img/mesa-marmol-2.jpg" alt="Mesa de mármol con patas de eucalipto" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Mesa de mármol · Patas de eucalipto</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="muebles" data-images='["img/bajo-mesada.jpg", "img/mesada-detalle.jpg"]' data-alts='["Bajo mesada y mesada de eucalipto finger joint", "Detalle de mesada con pileta"]' onclick="openLightbox(this)">
+        <img src="img/bajo-mesada.jpg" alt="Bajo mesada y mesada de eucalipto finger joint" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Bajo mesada y mesada · Eucalipto finger joint</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" data-images='["img/estanteria-escalonada.jpg","img/estanteria-plantas.jpg"]' data-alts='["Estantería escalonada de pino","Estantería escalonada con plantas"]' onclick="openLightbox(this)">
+        <img src="img/estanteria-escalonada.jpg" alt="Estantería escalonada de pino" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Estantería escalonada · Pino</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/mueble-electrodomesticos.jpg" alt="Mueble para electrodomésticos de cocina" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Mueble para electrodomésticos · Eucalipto y fenólico</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/ropero.jpg" alt="Ropero de madera maciza con puertas paneladas" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Ropero · Pino macizo con paneles</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/cajones-merceria.jpg" alt="Cajones organizadores para mercería" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Cajones para mercería · Pino</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="muebles" onclick="openLightbox(this)">
+        <img src="img/mesada-eucalipto-2.jpg" alt="Mesada de eucalipto con pileta y herrajes de hierro" loading="lazy">
+        <span class="cat-badge">Muebles</span>
+        <figcaption>Mesada de eucalipto · Con pileta y herrajes de hierro</figcaption>
+      </figure>
+
+      <!-- MUEBLES DE BOLSILLO -->
+      <figure class="gallery-item" data-cat="bolsillo" data-images='["img/marcador-libro.jpg", "img/marcadores-grupo.jpg"]' data-alts='["Marcador de libro artesanal", "Marcadores de libro variados"]' onclick="openLightbox(this)">
+        <img src="img/marcador-libro.jpg" alt="Marcador de libro artesanal" loading="lazy">
+        <span class="cat-badge">Bolsillo</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Marcadores de libro · Eucalipto colorado</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="bolsillo" onclick="openLightbox(this)">
+        <img src="img/auto-juguete.jpg" alt="Auto de juguete de madera" loading="lazy">
+        <span class="cat-badge">Bolsillo</span>
+        <figcaption>Auto de juguete · Eucalipto colorado y finger</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="bolsillo" data-images='["img/personalizado.jpg","img/personalizado-2.jpg","img/perchero-2.jpg"]' data-alts='["Piezas personalizadas con grabado l\u00e1ser","Piezas con nombre grabado","Marcadores de libro con grabado"]' onclick="openLightbox(this)">
+        <img src="img/personalizado.jpg" alt="Piezas personalizadas con grabado láser" loading="lazy">
+        <span class="cat-badge">Bolsillo</span>
+        <span class="photo-count">3 fotos</span>
+        <figcaption>Personalización · Grabado láser a pedido</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="bolsillo" onclick="openLightbox(this)">
+        <img src="img/tabla-cocina.jpg" alt="Tabla de cocina de eucalipto finger joint" loading="lazy">
+        <span class="cat-badge">Bolsillo</span>
+        <figcaption>Tabla de cocina · Eucalipto finger joint</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="bolsillo" onclick="openLightbox(this)">
+        <img src="img/tarugos.jpg" alt="Tarugos de madera artesanales" loading="lazy">
+        <span class="cat-badge">Bolsillo</span>
+        <figcaption>Tarugos · Fabricación propia</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="bolsillo" onclick="openLightbox(this)">
+        <img src="img/espada-madera.jpg" alt="Espada de madera artesanal con mango de soga" loading="lazy">
+        <span class="cat-badge">Bolsillo</span>
+        <figcaption>Espada de madera · Con mango de soga</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="bolsillo" onclick="openLightbox(this)">
+        <img src="img/soporte-botellas.jpg" alt="Soporte equilibrio para botellas de vino" loading="lazy">
+        <span class="cat-badge">Bolsillo</span>
+        <figcaption>Soporte para botellas · Equilibrio en madera</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="bolsillo" onclick="openLightbox(this)">
+        <img src="img/anillos.jpg" alt="Anillos de madera artesanales" loading="lazy">
+        <span class="cat-badge">Bolsillo</span>
+        <figcaption>Anillos de madera · Artesanales</figcaption>
+      </figure>
+
+      <!-- ABERTURAS -->
+      <figure class="gallery-item" data-cat="aberturas" onclick="openLightbox(this)">
+        <img src="img/celosia.jpg" alt="Celosía de madera" loading="lazy">
+        <span class="cat-badge">Aberturas</span>
+        <figcaption>Celosía exterior · Eucalipto colorado</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="aberturas" onclick="openLightbox(this)">
+        <img src="img/celosia-ventana.jpg" alt="Celosía de ventana en pino" loading="lazy">
+        <span class="cat-badge">Aberturas</span>
+        <figcaption>Celosía de ventana · Pino</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="aberturas" onclick="openLightbox(this)">
+        <img src="img/puertas-marcos.jpg" alt="Marcos de pino a medida y colocación de puertas" loading="lazy">
+        <span class="cat-badge">Aberturas</span>
+        <figcaption>Marcos a medida y colocación · Pino</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="aberturas" onclick="openLightbox(this)">
+        <img src="img/puerta-bano.jpg" alt="Puerta de baño en pino a medida" loading="lazy">
+        <span class="cat-badge">Aberturas</span>
+        <figcaption>Puerta de baño · Pino a medida</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="aberturas" data-images='["img/porton.jpg","img/tranca-porton.jpg"]' data-alts='["Portón con marco de madera dura","Tranca del portón"]' onclick="openLightbox(this)">
+        <img src="img/porton.jpg" alt="Portón con marco de madera dura" loading="lazy">
+        <span class="cat-badge">Aberturas</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Portón con tranca · Madera dura</figcaption>
+      </figure>
+
+      <!-- SOLUCIONES A MEDIDA -->
+      <figure class="gallery-item" data-cat="soluciones" data-images='["img/servilletero.jpg", "img/servilletero-detalle.jpg"]' data-alts='["Servilletero de madera a medida", "Detalle del encastre del servilletero"]' onclick="openLightbox(this)">
+        <img src="img/servilletero.jpg" alt="Servilletero de madera a medida" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Servilletero · Hecho a medida</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="soluciones" data-images='["img/soporte-barra.jpg", "img/soporte-barra-2.jpg"]' data-alts='["Soporte de madera para barra met\u00e1lica", "Soportes instalados bajo mueble"]' onclick="openLightbox(this)">
+        <img src="img/soporte-barra.jpg" alt="Soporte de madera para barra metálica" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Soporte para barra · Enganche a medida</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="soluciones" onclick="openLightbox(this)">
+        <img src="img/panel-electrico.jpg" alt="Tapa de tablero eléctrico a medida" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <figcaption>Tapa de tablero eléctrico · Eucalipto colorado</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="soluciones" data-images='["img/llavero-pared.jpg","img/sostenedor-cano.jpg"]' data-alts='["Porta llaves montado en pared","Porta llaves de madera"]' onclick="openLightbox(this)">
+        <img src="img/llavero-pared.jpg" alt="Porta llaves montado en pared" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Porta llaves · Eucalipto colorado</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="soluciones" data-images='["img/perchero.jpg","img/llaveros-nuevos.jpg"]' data-alts='["Perchero de pared","Perchero de pared de eucalipto colorado"]' onclick="openLightbox(this)">
+        <img src="img/perchero.jpg" alt="Perchero de pared" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <span class="photo-count">2 fotos</span>
+        <figcaption>Perchero de pared · Eucalipto colorado</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="soluciones" onclick="openLightbox(this)">
+        <img src="img/toallero.jpg" alt="Toallero de pared en madera" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <figcaption>Toallero de pared · Madera maciza</figcaption>
+      </figure>
+      <figure class="gallery-item portrait" data-cat="soluciones" onclick="openLightbox(this)">
+        <img src="img/estante-telefono.jpg" alt="Estante de pared para teléfono y wifi" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <figcaption>Estante para teléfono y wifi · A pared</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="soluciones" onclick="openLightbox(this)">
+        <img src="img/tranca-escalera.jpg" alt="Tranca de puerta tipo pasador artesanal" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <figcaption>Tranca de puerta · Pasador artesanal</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="soluciones" onclick="openLightbox(this)">
+        <img src="img/cenefa-ac.jpg" alt="Cenefa de madera para ocultar cañería del aire acondicionado" loading="lazy">
+        <span class="cat-badge">Soluciones</span>
+        <figcaption>Cenefa para aire acondicionado · Oculta cañerías</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="prevSlide(event)" aria-label="Anterior">&#8249;</button>
+  <img src="" alt="" id="lightbox-img">
+  <button class="lightbox-nav lightbox-next" onclick="nextSlide(event)" aria-label="Siguiente">&#8250;</button>
+  <div class="lightbox-bottom">
+    <span class="lightbox-caption" id="lightbox-caption"></span>
+    <span class="lightbox-counter" id="lightbox-counter"></span>
+  </div>
+</div>
+
+
+<!-- Servicios -->
+<section class="services-section" id="servicios">
+  <div class="section-inner">
+    <div class="services-intro">
+      <span class="section-eyebrow">Servicios</span>
+      <h2>Lo que podemos hacer por vos</h2>
+      <p>Cada proyecto se hace a medida, trabajando con el material que necesites y conversando con vos desde el principio.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3>Muebles a medida</h3>
+        <p>Mesas, estantes, esquineros, racks, bancos, zapateros — lo que necesites, en las medidas que tu espacio pide. Todo pensado y construido para vos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <h3>Muebles de bolsillo</h3>
+        <p>Piezas pequeñas con el mismo cuidado: marcadores de libro, juguetes de madera, artículos para el hogar. Ideales para regalar, con opción de personalización con grabado láser.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Aberturas y carpintería de obra</h3>
+        <p>Puertas, marcos, celosías, revestimientos. Carpintería integrada a tu casa, con terminación prolija y bien lijada.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94L6.9 20.1a2.12 2.12 0 0 1-3-3l6.63-6.63a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Soluciones a medida</h3>
+        <p>Percheros, porta llaves, sostenedores de caño, tapas de tablero eléctrico, cenefas para cañerías de aire — cualquier solución funcional en madera que necesites.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Arreglos y restauración</h3>
+        <p>Le damos nueva vida a muebles que ya tienen historia. Reparaciones, lijado, tratamiento y terminación para que vuelvan a lucir.</p>
+      </div>
+    </div>
+
+    <!-- Info blocks -->
+    <div class="info-blocks">
+      <div class="info-block">
+        <h3>
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Materiales con los que trabajamos
+        </h3>
+        <ul>
+          <li>Eucalipto colorado y común</li>
+          <li>Eucalipto finger joint</li>
+          <li>Pino</li>
+          <li>Lapacho rosado</li>
+          <li>MDF y fenólico</li>
+          <li>Y el material que el cliente necesite</li>
+        </ul>
+      </div>
+      <div class="info-block">
+        <h3>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Cómo trabajamos
+        </h3>
+        <p>Charlamos tu idea, tomamos medidas, hacemos un presupuesto, y arrancamos. Trabajamos con seña del 50% para empezar y el resto contra entrega. Los plazos dependen del proyecto: muebles grandes aproximadamente un mes, piezas chicas en unos días.</p>
+      </div>
+      <div class="info-block">
+        <h3>
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Zona de cobertura
+        </h3>
+        <p>Trabajamos en toda la Costa de Canelones: Parque del Plata, Atlántida, Las Toscas, Salinas, Marindia, Floresta, Costa Azul y alrededores. Para Montevideo o Maldonado también llegamos — con trabajos coordinados que cubran los costos y el tiempo de traslado. Hacemos envíos al interior del país.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nosotros -->
+<section class="about-section" id="nosotros">
+  <div class="about-inner">
+    <span class="section-eyebrow">Nosotros</span>
+    <h2>Madera, oficio y ganas</h2>
+    <div class="about-divider"></div>
+    <p>El Palo Justo nació de las ganas de hacer las cosas bien con las manos. Somos un taller de carpintería en Parque del Plata dedicado a muebles rústicos y soluciones en madera, trabajando con el material que cada proyecto requiera.</p>
+    <p>La mayoría de nuestros trabajos se piensan para quien los encarga, pero también hacemos producciones en serie como marcadores de libro, porta llaves y otros productos pensados para reventa. Nos gusta que la madera se luzca, que se note la veta, el nudo, lo que hace única a cada pieza. Todo lleva una terminación bien lijada y cuidada.</p>
+    <p>También hacemos piezas chicas y artículos personalizados con grabado láser, ideales para locales, regalos o recuerdos.</p>
+    <p>Si tenés una idea, por loca que parezca, escribinos. Capaz que le encontramos la vuelta.</p>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="contact-section" id="contacto">
+  <div class="section-inner">
+    <div class="contact-intro">
+      <span class="section-eyebrow">Contacto</span>
+      <h2>Hablemos</h2>
+      <p>Contanos qué tenés en mente y te armamos un presupuesto sin compromiso.</p>
+    </div>
+    <div class="contact-channels">
+      <a href="https://wa.me/59896113791" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">096 113 791</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/elpalojustomuebleria/" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon ig">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value">@elpalojustomuebleria</div>
+        </div>
+      </a>
+      <a href="mailto:elpalojusto@gmail.com" class="contact-card">
+        <div class="contact-icon em">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="#fff" stroke-width="2"/><polyline points="22,6 12,13 2,6" fill="none" stroke="#fff" stroke-width="2"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">elpalojusto@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61573673945422" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon fb">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Facebook</div>
+          <div class="contact-value">El Palo Justo</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 El Palo Justo · Parque del Plata, Canelones</p>
+  <p style="margin-top: 6px;">Sitio creado por <a href="https://raiaweb.netlify.app" target="_blank" rel="noopener">RaIA</a></p>
+</footer>
+
+<script>
+function closeMenu() {
+  document.querySelector('.nav-links').classList.remove('open');
+}
+
+// Gallery filter
+function filterGallery(cat) {
+  var tabs = document.querySelectorAll('.cat-tab');
+  tabs.forEach(function(t) { t.classList.remove('active'); });
+  event.target.classList.add('active');
+  var items = document.querySelectorAll('.gallery-item');
+  items.forEach(function(item) {
+    if (cat === 'todos' || item.dataset.cat === cat) {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+}
+
+// Lightbox carousel state
+var lbImages = [];
+var lbAlts = [];
+var lbIndex = 0;
+var lbCaption = '';
+
+function openLightbox(el) {
+  var img = el.querySelector('img');
+  var caption = el.querySelector('figcaption');
+  lbCaption = caption ? caption.textContent : '';
+
+  if (el.dataset.images) {
+    lbImages = JSON.parse(el.dataset.images);
+    lbAlts = JSON.parse(el.dataset.alts);
+  } else {
+    lbImages = [img.getAttribute('src')];
+    lbAlts = [img.alt];
+  }
+
+  lbIndex = 0;
+  showSlide();
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function showSlide() {
+  var lbImg = document.getElementById('lightbox-img');
+  lbImg.src = lbImages[lbIndex];
+  lbImg.alt = lbAlts[lbIndex];
+  document.getElementById('lightbox-caption').textContent = lbCaption;
+
+  var counter = document.getElementById('lightbox-counter');
+  var prevBtn = document.querySelector('.lightbox-prev');
+  var nextBtn = document.querySelector('.lightbox-next');
+
+  if (lbImages.length > 1) {
+    counter.textContent = (lbIndex + 1) + ' / ' + lbImages.length;
+    prevBtn.classList.toggle('visible', lbIndex > 0);
+    nextBtn.classList.toggle('visible', lbIndex < lbImages.length - 1);
+  } else {
+    counter.textContent = '';
+    prevBtn.classList.remove('visible');
+    nextBtn.classList.remove('visible');
+  }
+}
+
+function prevSlide(e) {
+  e.stopPropagation();
+  if (lbIndex > 0) { lbIndex--; showSlide(); }
+}
+
+function nextSlide(e) {
+  e.stopPropagation();
+  if (lbIndex < lbImages.length - 1) { lbIndex++; showSlide(); }
+}
+
+function closeLightbox(e) {
+  if (e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  var lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('active')) return;
+  if (e.key === 'Escape') {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  } else if (e.key === 'ArrowLeft' && lbIndex > 0) {
+    lbIndex--; showSlide();
+  } else if (e.key === 'ArrowRight' && lbIndex < lbImages.length - 1) {
+    lbIndex++; showSlide();
+  }
+});
+
+// Swipe support for mobile
+(function() {
+  var lb = document.getElementById('lightbox');
+  var startX = 0;
+  lb.addEventListener('touchstart', function(e) {
+    startX = e.changedTouches[0].screenX;
+  }, {passive: true});
+  lb.addEventListener('touchend', function(e) {
+    var diff = e.changedTouches[0].screenX - startX;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0 && lbIndex < lbImages.length - 1) { lbIndex++; showSlide(); }
+      else if (diff > 0 && lbIndex > 0) { lbIndex--; showSlide(); }
+    }
+  }, {passive: true});
+})();
+</script>
+
+</body></html>
